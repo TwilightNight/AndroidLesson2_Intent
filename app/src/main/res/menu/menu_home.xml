@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".HomeActivity">
+    <item
+        android:id="@+id/intent_action_view"
+        android:orderInCategory="0"
+        android:title="android.intent.action.VIEW"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/intent_action_search"
+        android:orderInCategory="1"
+        android:title="android.intent.action.WEB_SEARCH"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/intent_action_call"
+        android:orderInCategory="2"
+        android:title="android.intent.action.CALL"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/intent_action_dial"
+        android:orderInCategory="3"
+        android:title="android.intent.action.DIAL"
+        app:showAsAction="never" />
+
+</menu>

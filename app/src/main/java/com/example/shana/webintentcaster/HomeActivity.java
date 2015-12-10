@@ -1,12 +1,13 @@
 package com.example.shana.webintentcaster;
 
-import android.app.SearchManager;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -22,9 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     EditText editText;
     @OnClick(R.id.activity_home_button)
     void onSubmit(){
-        Intent intent = new Intent(spinner.getSelectedItem().toString());
-        intent.putExtra(SearchManager.QUERY, editText.getText().toString());
-        startActivity(intent);
+        startActivityWithSelectedItem(spinner.getSelectedItem().toString());
     }
 
     @Override
@@ -34,5 +33,25 @@ public class HomeActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.actions, android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        startActivityWithSelectedItem(item.getTitle().toString());
+        return true;
+    }
+
+    private void startActivityWithSelectedItem(String selectedItem){
+        try{
+            startActivity(IntentFactory.getIntent(selectedItem, editText.getText().toString()));
+        } catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG);
+        }
     }
 }
