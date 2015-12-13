@@ -51,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         try{
             startActivity(IntentFactory.getIntent(selectedItem, editText.getText().toString()));
         } catch (Exception e){
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG);
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }
